@@ -1,5 +1,5 @@
 ---
 applications:
-- name: my-anularApp2
+- name: testing
   memory: 512M
   instances: 1
