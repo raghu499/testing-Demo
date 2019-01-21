@@ -1,0 +1,5 @@
+---
+applications:
+- name: my-anularApp2
+  memory: 512M
+  instances: 1
