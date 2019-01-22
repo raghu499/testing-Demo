@@ -9,9 +9,22 @@
 <p>Raghu Angular</p>
 
 
-<h6>Token Generation</h6>
-<hr>
+<h3>Get Employee Details</h3>
 <p>{{products}}</p>
+<hr>
+<button (click)="getUsers()" [disabled]="loading">
+  {{ loading ? 'Loading...' : 'Get Users' }}
+</button>
+<p>{{output}}</p>
 
+<div class="error">{{error}}</div>
 
+<!-- <hr>
+<button (click)="fireError()">
+  Fire Error
+</button>
+<br>
+<button (click)="fireErrorWithNet()">
+  Fire Error With Net
+</button> -->
 

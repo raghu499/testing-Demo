@@ -1,3 +1,4 @@
+import { UserService } from './../user.service';
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
@@ -12,8 +13,12 @@ export class ArraysComponent implements OnInit {
 
   myHero = this.heroes[0];
   rows;
+  output;
   products;
-  constructor(private http: HttpClient) { }
+  loading: boolean;
+  error: string;
+
+  constructor(private http: HttpClient,private userService: UserService) { }
 
   ngOnInit() {
     console.log("checking A", this.heroes);
@@ -25,13 +30,33 @@ export class ArraysComponent implements OnInit {
 
 
   getData() {
-    this.http.get('https://examapp.cfapps.io/users/tokenGen')
+  
+    this.http.get('./assets/TitleData.json')
       .subscribe((response) => {
         //this.EmployeeDetails = response as string[];
         this.rows = response;
         this.products = JSON.stringify(response);
         console.log(JSON.stringify(this.rows));
       });
+   
+  }
+  getUsers(){
+    this.loading = true;
+
+    this.userService.getUsers().subscribe(
+      users => {
+        console.log(users);
+        this.output= JSON.stringify(users);
+        this.loading = false;
+      },
+      error => {
+        this.error = error;
+        this.loading = false;
+      }
+    );
   }
 
-}
+  }
+
+  
+
